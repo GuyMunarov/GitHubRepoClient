@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center mt-5">
+    <h1>Your Bookmarks</h1>
+</div>
+<hr class="w-50 justify-content-center mt-3 d-flex" style="margin: auto;">
+<a (click)="exportToExcel()" *ngIf="collection && collection.items" class="d-flex w-50 btn btn-primary justify-content-center mt-5" style="margin: auto;">Export To Excel</a>
+<h2 class="text-center mt-5" *ngIf="!collection || !collection.items">You havent added any bookmarks yet. you can do it in the browse section.</h2>
+<ng-container *ngIf="collection && collection.items">
+    <app-repo-gallery [collection]="collection" (pageChanged)="onPageChanged($event)"></app-repo-gallery>
+</ng-container>

@@ -1,0 +1,14 @@
+
+
+<div class="d-flex justify-content-center mt-5">
+    <div style="display: inline-block; width: 50rem;" class="text-center">
+        <form [formGroup]="repoForm" (ngSubmit)="onSubmit()">
+            <h1>SEARCH A REPO:</h1>
+            <app-text-input formControlName="searchInput" [label]="'Search'"></app-text-input>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!repoForm.valid">SEARCH</button>
+          </form>
+    </div>
+</div>
+<ng-container *ngIf="collection">
+    <app-repo-gallery [collection]="collection" (pageChanged)="onPageChanged($event)"></app-repo-gallery>
+</ng-container>

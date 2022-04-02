@@ -1,0 +1,29 @@
+<ngx-smart-modal class="text-center"  #EmailPopup (onAnyCloseEvent)="bookMark()" identifier="EmailPopup">
+    <h1>Send bookmark verification to email</h1>
+    <form [formGroup]="popupForm" (ngSubmit)="onSubmit()">
+    <p>Enter your email</p> 
+    <app-text-input formControlName="email" [label]="'Email Address'"></app-text-input>
+
+    <button class="w-100 btn btn-lg btn-primary" [disabled]="popupForm.invalid" type="submit">Send Email</button>
+    <button class="w-100 btn btn-lg btn-outline-secondary" type="button" (click)="onClose()">Close</button>
+    </form>
+  </ngx-smart-modal>
+
+<div class="card h-100 shadow-sm">
+    <div class="image position-relative" style="cursor: pointer;">
+      <img *ngIf="!repo.owner" src="{{repo.avatar_url}}" alt="{{repo.name}}" class="img-fluid bg-info">
+      <img *ngIf="repo.owner" src="{{repo.owner.avatar_url}}" alt="{{repo.name}}" class="img-fluid bg-info">
+      <div class="d-flex align-items-center justify-content-center hover-overlay">
+        <button *ngIf="repo.isBookmarked" type="button" (click)="openPopupAndSetBookmark(repo)" class="btn btn-primary fa  fa-bookmark mr-2"></button>
+        <button *ngIf="!repo.isBookmarked" type="button" (click)="unbookmark(repo)" class="btn btn-primary fa fa-ban mr-2"></button>
+
+      </div>
+    </div>
+      <div class="card-body d-flex flex-column">
+              <h6 class="text-uppercase" >{{repo.name}}</h6>
+          <span class="mb-2">{{repo.description}}</span>
+        </div>
+      </div>
+    
+  
+  
