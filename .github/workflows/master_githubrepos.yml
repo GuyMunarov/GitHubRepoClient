@@ -15,6 +15,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+         fetch-depth: 0
+
 
       - name: Set up Node.js version
         uses: actions/setup-node@v1
@@ -47,10 +50,8 @@ jobs:
           name: node-app
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'GitHubRepos'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7BAFCDEE2CEA4F7C82DFA448DF259200 }}
-          package: .
+          publish-profile: $
+          package: ../../dist/GitHubNetwork
